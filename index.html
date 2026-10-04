@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Teacher's Day, Ma'am! 🌷</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffe6f0, #fff4d6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 750px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            animation: appear 1s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .flower {
+            font-size: 55px;
+            animation: floating 2s infinite ease-in-out;
+        }
+
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 36px;
+            margin: 10px 0;
+        }
+
+        h2 {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .message {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .choices {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .choice {
+            border: none;
+            width: 180px;
+            padding: 20px;
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 18px;
+        }
+
+        .choice:hover {
+            transform: translateY(-8px) scale(1.03);
+        }
+
+        .choice .emoji {
+            display: block;
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .flowers {
+            border: 3px solid #ff9ec4;
+        }
+
+        .chocolate {
+            border: 3px solid #a86b42;
+        }
+
+        #result {
+            display: none;
+            margin-top: 30px;
+            animation: showResult 0.8s ease;
+        }
+
+        @keyframes showResult {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        #result h2 {
+            color: #d63384;
+            margin-bottom: 10px;
+        }
+
+        #selectedMessage {
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 17px;
+        }
+
+        .video-box {
+            width: 100%;
+            background: #111;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        video {
+            width: 100%;
+            display: block;
+            max-height: 420px;
+        }
+
+        .thank-you {
+            margin-top: 25px;
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .heart {
+            position: fixed;
+            bottom: -20px;
+            font-size: 22px;
+            animation: hearts 5s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes hearts {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .reset {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: #d63384;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .reset:hover {
+            background: #b82b70;
+        }
+
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .container {
+                padding: 25px 15px;
+            }
+
+            .choice {
+                width: 150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="flower">🌷</div>
+
+        <h1>Happy Teacher's Day!</h1>
+
+        <h2>Para kay Ma'am 💐</h2>
+
+        <p class="message">
+            Thank you, Ma'am, for your patience, kindness, and effort
+            in teaching and guiding us every day. ❤️
+            <br><br>
+            This little surprise is just a simple way of saying
+            <b>THANK YOU!</b> 🥰
+        </p>
+
+        <h3 style="margin-bottom: 20px;">
+            Choose your surprise, Ma'am! 💝
+        </h3>
+
+        <div class="choices">
+
+            <button class="choice flowers" onclick="chooseGift('flowers')">
+                <span class="emoji">💐</span>
+                Flowers
+            </button>
+
+            <button class="choice chocolate" onclick="chooseGift('chocolate')">
+                <span class="emoji">🍫</span>
+                Chocolate
+            </button>
+
+        </div>
+
+        <div id="result">
+
+            <h2 id="resultTitle"></h2>
+
+            <p id="selectedMessage"></p>
+
+            <div class="video-box">
+
+                <!-- PALITAN ANG FILENAME KUNG IBA ANG PANGALAN NG VIDEO -->
+                <video id="teacherVideo" controls>
+                    <source src="764486ae-5b3d-4234-b989-bd840f160206.mp4" type="video/mp4">
+                    
+                </video>
+
+            </div>
+
+            <p class="thank-you">
+                💖 Thank you for being an amazing teacher, Ma'am! 💖
+                <br>
+                We appreciate everything you do for us.
+            </p>
+
+            <button class="reset" onclick="resetPage()">
+                Choose Again
+            </button>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function chooseGift(type) {
+
+            const result = document.getElementById("result");
+            const title = document.getElementById("resultTitle");
+            const message = document.getElementById("selectedMessage");
+            const video = document.getElementById("teacherVideo");
+
+            result.style.display = "block";
+
+            if (type === "flowers") {
+
+                title.innerHTML = "💐 You chose Flowers! 💐";
+
+                message.innerHTML =
+                    "A beautiful flower for a beautiful teacher! 🌷 " +
+                    "Thank you for helping us grow and learn every day. ❤️";
+
+            } else {
+
+                title.innerHTML = "🍫 You chose Chocolate! 🍫";
+
+                message.innerHTML =
+                    "A little chocolate to make your Teacher's Day sweeter! 🍫 " +
+                    "Thank you for everything, Ma'am! ❤️";
+
+            }
+
+            result.scrollIntoView({
+                behavior: "smooth"
+            });
+
+            // Restart video kapag pumili
+            video.currentTime = 0;
+
+            createHearts();
+        }
+
+
+        function resetPage() {
+
+            document.getElementById("result").style.display = "none";
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+
+        function createHearts() {
+
+            for (let i = 0; i < 15; i++) {
+
+                const heart = document.createElement("div");
+
+                heart.className = "heart";
+
+                heart.innerHTML =
+                    Math.random() > 0.5 ? "❤️" : "🌸";
+
+                heart.style.left =
+                    Math.random() * 100 + "vw";
+
+                heart.style.animationDuration =
+                    (3 + Math.random() * 4) + "s";
+
+                heart.style.fontSize =
+                    (15 + Math.random() * 20) + "px";
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 7000);
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
+
+
+
